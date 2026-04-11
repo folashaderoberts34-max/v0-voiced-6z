@@ -8,7 +8,7 @@ import { ProfileScreen } from "@/components/voiced/profile-screen"
 import { SubmitScreen } from "@/components/voiced/submit-screen"
 import { PricingScreen } from "@/components/voiced/pricing-screen"
 
-type Screen = "home" | "discover" | "submit" | "account"
+type Screen = "home" | "discover" | "submit" | "subscribe"
 type DetailScreen = "story" | "profile" | null
 
 interface NavigationState {
@@ -73,6 +73,7 @@ export default function VoicedApp() {
           storyId={currentStoryId}
           onBack={handleBack}
           onAuthorClick={handleAuthorClick}
+          onSupportClick={() => handleNavigate("subscribe")}
         />
         <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
       </main>
@@ -108,7 +109,7 @@ export default function VoicedApp() {
         />
       )}
       {activeScreen === "submit" && <SubmitScreen />}
-      {activeScreen === "account" && <PricingScreen />}
+      {activeScreen === "subscribe" && <PricingScreen />}
       <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
     </main>
   )

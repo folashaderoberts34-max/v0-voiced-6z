@@ -7,6 +7,7 @@ interface StoryScreenProps {
   storyId: string
   onBack: () => void
   onAuthorClick: (authorId: string) => void
+  onSupportClick: () => void
 }
 
 const storyContent: Record<string, { paragraphs: string[] }> = {
@@ -95,16 +96,10 @@ const authorBios: Record<string, { bio: string; initials: string }> = {
   "emily-hartman": { bio: "Rural American writer from Nebraska", initials: "EH" },
 }
 
-export function StoryScreen({ storyId, onBack, onAuthorClick }: StoryScreenProps) {
+export function StoryScreen({ storyId, onBack, onAuthorClick, onSupportClick }: StoryScreenProps) {
   const story = allStories.find((s) => s.id === storyId) || allStories[0]
   const content = storyContent[story.id] || storyContent["1"]
   const authorInfo = authorBios[story.authorId] || { bio: "Writer", initials: "AU" }
-
-  const handleSupportClick = () => {
-    if (story.supportLink) {
-      window.open(story.supportLink, "_blank", "noopener,noreferrer")
-    }
-  }
 
   return (
     <div className="min-h-screen bg-warm-cream pb-24">
@@ -179,11 +174,10 @@ export function StoryScreen({ storyId, onBack, onAuthorClick }: StoryScreenProps
             <Share2 className="h-6 w-6 text-forest-green" />
           </button>
           <button 
-            onClick={handleSupportClick}
-            className="bg-gold text-soft-white font-bold px-6 py-3 rounded-full hover:bg-gold/90 transition-colors flex items-center gap-2"
+            onClick={onSupportClick}
+            className="bg-gold text-soft-white font-bold px-6 py-3 rounded-full hover:bg-gold/90 transition-colors"
           >
-            <span>Support this Writer</span>
-            <ExternalLink className="h-4 w-4" />
+            Support this Writer
           </button>
         </div>
       </div>
