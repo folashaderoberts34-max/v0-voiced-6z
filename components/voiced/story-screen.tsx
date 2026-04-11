@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowLeft, Heart, Share2, ExternalLink } from "lucide-react"
+import { ArrowLeft, Heart, Share2 } from "lucide-react"
 import { allStories } from "./home-screen"
 
 interface StoryScreenProps {
@@ -145,23 +145,7 @@ export function StoryScreen({ storyId, onBack, onAuthorClick, onSupportClick }: 
           ))}
         </div>
 
-        {/* Support Link */}
-        {story.supportLink && (
-          <div className="mt-8 p-4 bg-soft-white rounded-xl border border-forest-green/20">
-            <p className="text-dark-charcoal text-sm mb-2">
-              Enjoyed this story? Support {story.author} directly:
-            </p>
-            <a
-              href={story.supportLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-forest-green font-medium hover:text-gold transition-colors"
-            >
-              <ExternalLink className="h-4 w-4" />
-              <span>{story.supportLink.replace(/^https?:\/\//, "").split("/")[0]}</span>
-            </a>
-          </div>
-        )}
+        
       </article>
 
       {/* Action Bar */}
