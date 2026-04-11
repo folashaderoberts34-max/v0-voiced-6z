@@ -13,7 +13,6 @@ const currentUser = {
   category: "Immigrant",
   bio: "First-generation Mexican-American writer exploring identity, family, and the spaces between two cultures. Based in Los Angeles.",
   readers: "2.4K",
-  followers: "847",
   storiesCount: 3,
 }
 
@@ -73,13 +72,6 @@ export function MyProfileScreen({ onStoryClick }: MyProfileScreenProps) {
             </div>
             <p className="text-forest-green font-bold text-lg">{currentUser.readers}</p>
             <p className="text-dark-charcoal text-sm">Readers</p>
-          </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-forest-green/10 flex items-center justify-center mx-auto mb-1">
-              <Users className="h-5 w-5 text-forest-green" />
-            </div>
-            <p className="text-forest-green font-bold text-lg">{currentUser.followers}</p>
-            <p className="text-dark-charcoal text-sm">Followers</p>
           </div>
         </div>
       </div>
