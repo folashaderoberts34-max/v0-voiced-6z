@@ -10,8 +10,8 @@ import { SubmitScreen } from "@/components/voiced/submit-screen"
 import { PricingScreen } from "@/components/voiced/pricing-screen"
 import { PatronScreen } from "@/components/voiced/patron-screen"
 
-type Screen = "home" | "profile" | "submit" | "subscribe"
-type DetailScreen = "story" | "authorProfile" | "patron" | null
+type Screen = "home" | "profile" | "submit" | "patrons" | "subscribe"
+type DetailScreen = "story" | "authorProfile" | null
 
 interface NavigationState {
   screen: Screen
@@ -51,14 +51,6 @@ export default function VoicedApp() {
     ])
     setCurrentAuthorId(authorId)
     setDetailScreen("authorProfile")
-  }
-
-  const handlePatronClick = () => {
-    setNavigationStack([
-      ...navigationStack,
-      { screen: activeScreen, detailScreen, storyId: currentStoryId, authorId: currentAuthorId },
-    ])
-    setDetailScreen("patron")
   }
 
   const handleBack = () => {
@@ -103,15 +95,6 @@ export default function VoicedApp() {
     )
   }
 
-  if (detailScreen === "patron") {
-    return (
-      <main className="max-w-md mx-auto bg-warm-cream min-h-screen relative">
-        <PatronScreen onJoinClick={() => handleNavigate("subscribe")} />
-        <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
-      </main>
-    )
-  }
-
   // Render main screens
   return (
     <main className="max-w-md mx-auto bg-warm-cream min-h-screen relative">
@@ -124,10 +107,12 @@ export default function VoicedApp() {
       {activeScreen === "profile" && (
         <MyProfileScreen
           onStoryClick={handleStoryClick}
-          onPatronClick={handlePatronClick}
         />
       )}
       {activeScreen === "submit" && <SubmitScreen />}
+      {activeScreen === "patrons" && (
+        <PatronScreen onJoinClick={() => handleNavigate("subscribe")} />
+      )}
       {activeScreen === "subscribe" && <PricingScreen />}
       <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
     </main>

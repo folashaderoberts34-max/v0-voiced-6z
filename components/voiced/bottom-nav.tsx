@@ -1,8 +1,8 @@
 "use client"
 
-import { Home, User, PenSquare, CreditCard } from "lucide-react"
+import { Home, User, PenSquare, CreditCard, Award } from "lucide-react"
 
-type Screen = "home" | "profile" | "submit" | "subscribe"
+type Screen = "home" | "profile" | "submit" | "patrons" | "subscribe"
 
 interface BottomNavProps {
   activeScreen: Screen
@@ -14,6 +14,7 @@ export function BottomNav({ activeScreen, onNavigate }: BottomNavProps) {
     { id: "home", label: "Home", icon: <Home className="h-5 w-5" /> },
     { id: "profile", label: "Profile", icon: <User className="h-5 w-5" /> },
     { id: "submit", label: "Submit", icon: <PenSquare className="h-5 w-5" /> },
+    { id: "patrons", label: "Patrons", icon: <Award className="h-5 w-5" /> },
     { id: "subscribe", label: "Subscribe", icon: <CreditCard className="h-5 w-5" /> },
   ]
 

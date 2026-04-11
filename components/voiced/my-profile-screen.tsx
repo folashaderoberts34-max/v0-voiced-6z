@@ -1,29 +1,32 @@
 "use client"
 
-import { Settings, Award, BookOpen, Users } from "lucide-react"
+import { Settings, BookOpen, Users } from "lucide-react"
 
 interface MyProfileScreenProps {
   onStoryClick: (storyId: string) => void
-  onPatronClick: () => void
 }
 
-// Current user's profile - this would come from auth in a real app
+// Current user's profile - Maria Santos from the stories
 const currentUser = {
-  name: "Your Name",
-  initials: "YN",
-  category: "Your Community",
-  bio: "Share your story with the world. Tap Settings to customize your profile.",
-  readers: "0",
-  followers: "0",
-  storiesCount: 0,
+  name: "Maria Santos",
+  initials: "MS",
+  category: "Immigrant",
+  bio: "First-generation Mexican-American writer exploring identity, family, and the spaces between two cultures. Based in Los Angeles.",
+  readers: "2.4K",
+  followers: "847",
+  storiesCount: 3,
 }
 
-// Mock stories for the user - empty for new users
-const userStories: { id: string; title: string; category: string; reads: string }[] = []
+// Maria's published stories
+const userStories = [
+  { id: "1", title: "The Garden My Mother Left Behind", category: "Immigrant", reads: "1.2K" },
+  { id: "5", title: "Between Two Tongues", category: "Immigrant", reads: "856" },
+  { id: "11", title: "Abuela's Kitchen", category: "Immigrant", reads: "344" },
+]
 
-export function MyProfileScreen({ onStoryClick, onPatronClick }: MyProfileScreenProps) {
+export function MyProfileScreen({ onStoryClick }: MyProfileScreenProps) {
   return (
-    <div className="min-h-screen bg-warm-cream pb-20">
+    <div className="min-h-screen bg-warm-cream pb-24">
       {/* Header Banner */}
       <div className="relative">
         <div className="bg-forest-green h-32">
@@ -81,50 +84,29 @@ export function MyProfileScreen({ onStoryClick, onPatronClick }: MyProfileScreen
         </div>
       </div>
 
-      {/* View Patrons Button */}
-      <div className="px-4 mb-6">
-        <button
-          onClick={onPatronClick}
-          className="w-full bg-gold text-soft-white font-bold py-4 rounded-xl hover:bg-gold/90 transition-colors flex items-center justify-center gap-3"
-        >
-          <Award className="h-5 w-5" />
-          <span>View Hall of Fame</span>
-        </button>
-      </div>
-
       {/* Published Stories */}
       <div className="px-4">
         <h2 className="text-dark-charcoal font-bold text-lg mb-4">
-          Your Published Stories
+          Published Stories
         </h2>
         <div className="space-y-3">
-          {userStories.length > 0 ? (
-            userStories.map((story) => (
-              <button
-                key={story.id}
-                onClick={() => onStoryClick(story.id)}
-                className="w-full bg-soft-white rounded-xl p-4 border border-forest-green/30 text-left hover:border-forest-green transition-colors"
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <h3 className="text-dark-charcoal font-bold text-lg">
-                    {story.title}
-                  </h3>
-                  <span className="text-dark-charcoal/60 text-sm">{story.reads} reads</span>
-                </div>
-                <span className="inline-block bg-gold text-soft-white text-xs font-medium px-3 py-1 rounded-full">
-                  {story.category}
-                </span>
-              </button>
-            ))
-          ) : (
-            <div className="bg-soft-white rounded-xl p-8 border border-forest-green/20 text-center">
-              <BookOpen className="h-12 w-12 text-forest-green/30 mx-auto mb-4" />
-              <p className="text-dark-charcoal font-medium mb-2">No stories yet</p>
-              <p className="text-dark-charcoal/60 text-sm">
-                Submit your first story to see it here
-              </p>
-            </div>
-          )}
+          {userStories.map((story) => (
+            <button
+              key={story.id}
+              onClick={() => onStoryClick(story.id)}
+              className="w-full bg-soft-white rounded-xl p-4 border border-forest-green/30 text-left hover:border-forest-green transition-colors"
+            >
+              <div className="flex justify-between items-start mb-2">
+                <h3 className="text-dark-charcoal font-bold text-lg">
+                  {story.title}
+                </h3>
+                <span className="text-dark-charcoal/60 text-sm">{story.reads} reads</span>
+              </div>
+              <span className="inline-block bg-gold text-soft-white text-xs font-medium px-3 py-1 rounded-full">
+                {story.category}
+              </span>
+            </button>
+          ))}
         </div>
       </div>
     </div>
