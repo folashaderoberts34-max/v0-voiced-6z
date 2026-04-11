@@ -11,59 +11,82 @@ import { PricingScreen } from "@/components/voiced/pricing-screen"
 type Screen = "home" | "discover" | "submit" | "account"
 type DetailScreen = "story" | "profile" | null
 
+interface NavigationState {
+  screen: Screen
+  detailScreen: DetailScreen
+  storyId: string | null
+  authorId: string | null
+}
+
 export default function VoicedApp() {
   const [activeScreen, setActiveScreen] = useState<Screen>("home")
   const [detailScreen, setDetailScreen] = useState<DetailScreen>(null)
-  const [navigationHistory, setNavigationHistory] = useState<Screen[]>(["home"])
+  const [currentStoryId, setCurrentStoryId] = useState<string | null>(null)
+  const [currentAuthorId, setCurrentAuthorId] = useState<string | null>(null)
+  const [navigationStack, setNavigationStack] = useState<NavigationState[]>([])
 
   const handleNavigate = (screen: Screen) => {
     setActiveScreen(screen)
     setDetailScreen(null)
-    setNavigationHistory([screen])
+    setCurrentStoryId(null)
+    setCurrentAuthorId(null)
+    setNavigationStack([])
   }
 
-  const handleStoryClick = (_storyId: string) => {
-    setNavigationHistory([...navigationHistory, activeScreen])
+  const handleStoryClick = (storyId: string) => {
+    setNavigationStack([
+      ...navigationStack,
+      { screen: activeScreen, detailScreen, storyId: currentStoryId, authorId: currentAuthorId },
+    ])
+    setCurrentStoryId(storyId)
     setDetailScreen("story")
   }
 
-  const handleAuthorClick = (_authorId: string) => {
-    setNavigationHistory([...navigationHistory, activeScreen])
+  const handleAuthorClick = (authorId: string) => {
+    setNavigationStack([
+      ...navigationStack,
+      { screen: activeScreen, detailScreen, storyId: currentStoryId, authorId: currentAuthorId },
+    ])
+    setCurrentAuthorId(authorId)
     setDetailScreen("profile")
   }
 
   const handleBack = () => {
-    if (detailScreen === "profile" && navigationHistory.includes("home")) {
-      // If we came from a story to a profile, go back to story
-      const prevHistory = [...navigationHistory]
-      prevHistory.pop()
-      setNavigationHistory(prevHistory)
-      setDetailScreen("story")
+    if (navigationStack.length > 0) {
+      const prevState = navigationStack[navigationStack.length - 1]
+      setNavigationStack(navigationStack.slice(0, -1))
+      setDetailScreen(prevState.detailScreen)
+      setCurrentStoryId(prevState.storyId)
+      setCurrentAuthorId(prevState.authorId)
     } else {
       setDetailScreen(null)
-      setNavigationHistory([activeScreen])
+      setCurrentStoryId(null)
+      setCurrentAuthorId(null)
     }
   }
 
-  const handleProfileStoryClick = (_storyId: string) => {
-    setNavigationHistory([...navigationHistory, activeScreen])
-    setDetailScreen("story")
-  }
-
   // Render detail screens
-  if (detailScreen === "story") {
+  if (detailScreen === "story" && currentStoryId) {
     return (
       <main className="max-w-md mx-auto bg-warm-cream min-h-screen relative">
-        <StoryScreen onBack={handleBack} onAuthorClick={handleAuthorClick} />
+        <StoryScreen
+          storyId={currentStoryId}
+          onBack={handleBack}
+          onAuthorClick={handleAuthorClick}
+        />
         <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
       </main>
     )
   }
 
-  if (detailScreen === "profile") {
+  if (detailScreen === "profile" && currentAuthorId) {
     return (
       <main className="max-w-md mx-auto bg-warm-cream min-h-screen relative">
-        <ProfileScreen onBack={handleBack} onStoryClick={handleProfileStoryClick} />
+        <ProfileScreen
+          authorId={currentAuthorId}
+          onBack={handleBack}
+          onStoryClick={handleStoryClick}
+        />
         <BottomNav activeScreen={activeScreen} onNavigate={handleNavigate} />
       </main>
     )

@@ -19,7 +19,7 @@ export function PricingScreen() {
           <ul className="space-y-3 mb-6">
             <li className="flex items-center gap-3 text-dark-charcoal">
               <Check className="h-5 w-5 text-forest-green flex-shrink-0" />
-              <span>5 stories per month</span>
+              <span>2 stories per month</span>
             </li>
             <li className="flex items-center gap-3 text-dark-charcoal">
               <Check className="h-5 w-5 text-forest-green flex-shrink-0" />
@@ -41,7 +41,7 @@ export function PricingScreen() {
             Most Popular
           </span>
           <h2 className="text-soft-white text-xl font-bold mb-1">
-            Voiced Member
+            VOICED Member
           </h2>
           <p className="text-soft-white text-3xl font-bold mb-4">$4.99/month</p>
           <ul className="space-y-3 mb-6">
@@ -66,7 +66,7 @@ export function PricingScreen() {
         {/* Supporter Plan */}
         <div className="bg-soft-white rounded-xl p-6">
           <h2 className="text-dark-charcoal text-xl font-bold mb-1">
-            Voiced Supporter
+            VOICED Supporter
           </h2>
           <p className="text-dark-charcoal text-3xl font-bold mb-4">
             $9.99/month

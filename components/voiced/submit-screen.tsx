@@ -13,7 +13,7 @@ export function SubmitScreen() {
         Your Story Belongs Here.
       </h1>
       <p className="text-dark-charcoal mb-6">
-        Voiced is looking for real stories from real lives. No experience
+        VOICED is looking for real stories from real lives. No experience
         necessary.
       </p>
 
@@ -54,6 +54,7 @@ export function SubmitScreen() {
               </option>
               <option value="essay">Essay</option>
               <option value="fiction">Fiction</option>
+              <option value="nonfiction">Nonfiction</option>
               <option value="poetry">Poetry</option>
               <option value="memoir">Memoir</option>
             </select>
@@ -87,6 +88,25 @@ export function SubmitScreen() {
             </select>
             <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-dark-charcoal pointer-events-none" />
           </div>
+        </div>
+
+        {/* Support Link */}
+        <div>
+          <label
+            htmlFor="supportLink"
+            className="block text-dark-charcoal font-medium mb-2"
+          >
+            Support Link (optional)
+          </label>
+          <input
+            id="supportLink"
+            type="url"
+            className="w-full bg-soft-white border border-forest-green rounded-lg px-4 py-3 text-dark-charcoal placeholder:text-dark-charcoal/50 focus:outline-none focus:ring-2 focus:ring-gold"
+            placeholder="https://patreon.com/yourname"
+          />
+          <p className="text-dark-charcoal/60 text-xs mt-1">
+            Add your Patreon, Ko-fi, or personal website for readers to support you directly
+          </p>
         </div>
 
         {/* Story Content */}
