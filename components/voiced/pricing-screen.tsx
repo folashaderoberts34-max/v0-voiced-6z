@@ -43,7 +43,7 @@ export function PricingScreen() {
           <h2 className="text-soft-white text-xl font-bold mb-1">
             VOICED Member
           </h2>
-          <p className="text-soft-white text-3xl font-bold mb-4">$4.99/month</p>
+          <p className="text-soft-white text-3xl font-bold mb-4">$10/month</p>
           <ul className="space-y-3 mb-6">
             <li className="flex items-center gap-3 text-soft-white">
               <Check className="h-5 w-5 flex-shrink-0" />
@@ -69,7 +69,7 @@ export function PricingScreen() {
             VOICED Supporter
           </h2>
           <p className="text-dark-charcoal text-3xl font-bold mb-4">
-            $9.99/month
+            $20/month
           </p>
           <ul className="space-y-3 mb-6">
             <li className="flex items-center gap-3 text-dark-charcoal">

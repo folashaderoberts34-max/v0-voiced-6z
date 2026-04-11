@@ -90,25 +90,6 @@ export function SubmitScreen() {
           </div>
         </div>
 
-        {/* Support Link */}
-        <div>
-          <label
-            htmlFor="supportLink"
-            className="block text-dark-charcoal font-medium mb-2"
-          >
-            Support Link (optional)
-          </label>
-          <input
-            id="supportLink"
-            type="url"
-            className="w-full bg-soft-white border border-forest-green rounded-lg px-4 py-3 text-dark-charcoal placeholder:text-dark-charcoal/50 focus:outline-none focus:ring-2 focus:ring-gold"
-            placeholder="https://patreon.com/yourname"
-          />
-          <p className="text-dark-charcoal/60 text-xs mt-1">
-            Add your Patreon, Ko-fi, or personal website for readers to support you directly
-          </p>
-        </div>
-
         {/* Story Content */}
         <div>
           <label
