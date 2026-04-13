@@ -13,7 +13,7 @@ export function SubmitScreen() {
         Your Story Belongs Here.
       </h1>
       <p className="text-dark-charcoal mb-6">
-        VOICED. A publisher for every unheard voice
+      VOICED. A publisher for every unheard voice
       </p>
 
       <form className="space-y-4">
