@@ -1,7 +1,5 @@
-// Updated genre options in the submit screen
-
-const genres = ["fiction", "memoir", "poetry", "essay", "creative-nonfiction"];
-
-export default function SubmitScreen() {
-    // ... existing implementation
-}
+              <option value="fiction">Fiction</option>
+              <option value="memoir">Memoir</option>
+              <option value="poetry">Poetry</option>
+              <option value="essay">Essay</option>
+              <option value="creative-nonfiction">Creative Nonfiction</option>
