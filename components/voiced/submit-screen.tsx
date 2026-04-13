@@ -1,1 +1,1 @@
-const genreOptions = ["Fiction", "Memoir", "Poetry", "Essay", "Creative Nonfiction"];
+const genreOptions = [\n    'Fiction',\n    'Memoir',\n    'Poetry',\n    'Essay',\n    'Creative Nonfiction'\n];\n\nexport default genreOptions;
