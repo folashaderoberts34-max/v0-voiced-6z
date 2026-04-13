@@ -13,8 +13,7 @@ export function SubmitScreen() {
         Your Story Belongs Here.
       </h1>
       <p className="text-dark-charcoal mb-6">
-        VOICED is looking for real stories from real lives. No experience
-        necessary.
+        VOICED. A publisher for every unheard voice
       </p>
 
       <form className="space-y-4">
