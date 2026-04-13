@@ -1,1 +1,7 @@
-const genreOptions = [\n    'Fiction',\n    'Memoir',\n    'Poetry',\n    'Essay',\n    'Creative Nonfiction'\n];\n\nexport default genreOptions;
+// Updated genre options in the submit screen
+
+const genres = ["fiction", "memoir", "poetry", "essay", "creative-nonfiction"];
+
+export default function SubmitScreen() {
+    // ... existing implementation
+}
